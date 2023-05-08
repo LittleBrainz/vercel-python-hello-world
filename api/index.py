@@ -4,7 +4,10 @@
 
 
 from http.server import BaseHTTPRequestHandler
-from os.path import join
+from os.path import dirname, abspath, join
+
+
+path = join(dirname(abspath(__file__)), '..' 'data', 'stuff.txt')
 
 
 class handler(BaseHTTPRequestHandler):
@@ -14,10 +17,8 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
 
-        path = join('data', 'stuff.txt')
-        self.wfile.write(path.encode())
+        self.wfile.write((path + '\n\n').encode())
 
         with open(path, 'r') as file:
-            for line_text in file:
-                write_text = '> ' + line_text
-                self.wfile.write(write_text.encode())
+            for line in file:
+                self.wfile.write(('> ' + line).encode())
