@@ -7,7 +7,7 @@ from http.server import BaseHTTPRequestHandler
 from os.path import dirname, abspath, join
 
 
-path = join(dirname(abspath(__file__)), '..' 'data', 'stuff.txt')
+path = join(dirname(abspath(__file__)), '..', 'data', 'stuff.txt')
 
 
 class handler(BaseHTTPRequestHandler):
